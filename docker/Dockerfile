@@ -2,6 +2,9 @@
 FROM osrf/ros:humble-desktop
 
 ENV DEBIAN_FRONTEND=noninteractive
+# OpenGLコンテキスト作成エラーの一般的な回避策としてソフトウェアレンダリングを強制
+ENV LIBGL_ALWAYS_SOFTWARE=1
+
 
 # 君が書いたパッケージインストール
 RUN apt-get update && apt-get install -y --no-install-recommends \
@@ -32,8 +35,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     ros-humble-rqt-* \
     apt-transport-https \
     software-properties-common  \
-    nvidia-driver-535 \
-    libglvnd-dev \
     && rm -rf /var/lib/apt/lists/*
 
 # 君が書いたrealsense2のセットアップ
