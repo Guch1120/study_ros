@@ -35,6 +35,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     ros-humble-rqt-* \
     apt-transport-https \
     software-properties-common  \
+    mesa-utils  \
     && rm -rf /var/lib/apt/lists/*
 
 # 君が書いたrealsense2のセットアップ

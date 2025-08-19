@@ -33,6 +33,10 @@ services:
       - ./scripts:/home/dockeruser/scripts
       # D-Busソケットを共有
       - /var/run/dbus:/var/run/dbus
+      # ホストのNVIDIAドライバ関連ライブラリをコンテナにマウント
+      - /lib/x86_64-linux-gnu/libGL.so.1:/lib/x86_64-linux-gnu/libGL.so.1
+      - /lib/x86_64-linux-gnu/libGLX_nvidia.so.0:/lib/x86_64-linux-gnu/libGLX_nvidia.so.0
+      - /lib/x86_64-linux-gnu/libGLdispatch.so.0:/lib/x86_64-linux-gnu/libGLdispatch.so.0
 
 
     environment:
