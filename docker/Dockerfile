@@ -1,4 +1,4 @@
-# ベースイメージは君が選んだもの
+# ベースイメージ
 FROM osrf/ros:humble-desktop
 
 ENV DEBIAN_FRONTEND=noninteractive
@@ -36,6 +36,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     apt-transport-https \
     software-properties-common  \
     mesa-utils  \
+    libnss3-dev \
+    ros-humble-launch-testing \
     && rm -rf /var/lib/apt/lists/*
 
 # realsense2のセットアップ
@@ -56,18 +58,22 @@ RUN rm -f /etc/ros/rosdep/sources.list.d/20-default.list && rosdep init && rosde
 
 # ユーザー設定
 RUN useradd -m -s /bin/bash dockeruser && echo "dockeruser:yakiniku" | chpasswd && adduser dockeruser sudo
+RUN echo "dockeruser ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/dockeruser-nopasswd
+
 RUN groupadd -g 110 render || true && usermod -aG video,render dockeruser
 USER dockeruser
 # ワークスペースのセットアップ
-RUN mkdir -p /home/dockeruser/ros2_ws/src && \
-    cd /home/dockeruser/ros2_ws/src
 WORKDIR /home/dockeruser/ros2_ws
 
-#flexbeの環境設定
-RUN source /opt/ros/humble/setup.bash && \
-    colcon build --symlink-install && \
-    souece /home/dockeruser/ros2_ws/install/setup.bash && \
-    ros2 run flexbe_app nwjs_install
+# FlexBEのリポジトリを公式手順通り、humbleブランチを指定してクローン
+RUN git clone https://github.com/FlexBE/flexbe_behavior_engine.git -b humble src/flexbe_behavior_engine && \
+    git clone https://github.com/FlexBE/flexbe_app.git -b humble src/flexbe_app
+
+# 依存関係をインストールしてからビルドする
+RUN ["/bin/bash", "-c", "source /opt/ros/humble/setup.bash && \
+    rosdep update && \
+    rosdep install --from-paths src --ignore-src -r -y && \
+    colcon build --symlink-install"]
 
 # ワークスペースと設定ファイル用のディレクトリを作成
 RUN mkdir -p /home/dockeruser/ros2_ws/src/my_robot_configs/launch

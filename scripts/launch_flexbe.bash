@@ -3,17 +3,30 @@
 echo "--- FlexBE ---"
 
 # --- 環境設定 ---
-# ROSの基本環境を読み込む
-if [ -f "/opt/ros/humble/setup.bash" ]; then
-    source /opt/ros/humble/setup.bash
-fi
-# ワークスペースの環境を読み込む（ビルド後）
 if [ -f "/home/dockeruser/ros2_ws/install/setup.bash" ]; then
     source /home/dockeruser/ros2_ws/install/setup.bash
 fi
 
 export XDG_CONFIG_HOME=/tmp/.chromium
 export XDG_CACHE_HOME=/tmp/.chromium
+
+# --- nwjsのインストールチェックを追加 ---
+NWJS_DIR="/home/dockeruser/ros2_ws/install/flexbe_app/lib/flexbe_app/nwjs"
+
+# NWJS_DIRで指定したディレクトリが存在しない場合に、中の処理を実行する
+if [ ! -d "${NWJS_DIR}" ]; then
+    # nwjsのインストールを実行
+    echo "FlexBE App (nwjs) is not found. Installing nwjs..."
+    ros2 run flexbe_app nwjs_install
+    echo "nwjs installation finished."
+else
+# ディレクトリが存在する場合は、メッセージだけ表示して何もしない
+    echo "FlexBE App (nwjs) is already installed. Skipping installation."
+fi
+# --- ここまで ---
+
+echo -e "\e[32mready\e[0m\n"
+
 
 # --- 高度な終了処理 ---
 LAUNCH_PID=""
