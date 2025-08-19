@@ -1,11 +1,12 @@
-from setuptools import find_packages, setup
+#!/usr/bin/env python
+from setuptools import setup
 
-package_name = 'flexbe_hello_world'
+package_name = 'flexbe_hello_world_flexbe_behaviors'
 
 setup(
     name=package_name,
-    version='0.0.0',
-    packages=find_packages(exclude=['test']),
+    version='0.0.1',
+    packages=[package_name],
     data_files=[
         ('share/ament_index/resource_index/packages',
             ['resource/' + package_name]),
@@ -13,13 +14,14 @@ setup(
     ],
     install_requires=['setuptools'],
     zip_safe=True,
-    maintainer='dockeruser',
-    maintainer_email='dockeruser@todo.todo',
+    maintainer='phil',
+    maintainer_email='philsplus@gmail.com',
     description='TODO: Package description',
     license='TODO: License declaration',
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
+            'example_behavior_sm = flexbe_hello_world_flexbe_behaviors.example_behavior_sm',
         ],
     },
 )
