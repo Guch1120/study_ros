@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.10)
-project(flexbe_hello_world_flexbe_behaviors)
+project(test_flexbe_behaviors)
 
 find_package(ament_cmake REQUIRED)
 find_package(ament_cmake_python REQUIRED)

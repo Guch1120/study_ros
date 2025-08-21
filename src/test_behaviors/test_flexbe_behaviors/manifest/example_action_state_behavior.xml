@@ -2,7 +2,7 @@
 
 <behavior name="Example Action State Behavior">
 
-    <executable package_path="flexbe_hello_world_flexbe_behaviors.example_action_state_behavior_sm" class="ExampleActionStateBehaviorSM" />
+    <executable package_path="test_flexbe_behaviors.example_action_state_behavior_sm" class="ExampleActionStateBehaviorSM" />
     <tagstring>action</tagstring>
     <author>David Conner</author>
     <date>July 21, 2023</date>

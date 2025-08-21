@@ -1,4 +1,4 @@
-path: flexbe_hello_world_flexbe_states.example_action_state
+path: test_flexbe_states.example_action_state
 class: ExampleActionState
 
 import_only: false

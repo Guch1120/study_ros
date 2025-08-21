@@ -3,10 +3,10 @@
     href="http://download.ros.org/schema/package_format3.xsd"
     schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
-    <name>flexbe_hello_world_flexbe_behaviors</name>
+    <name>test_flexbe_behaviors</name>
     <version>0.0.1</version>
     <description>
-       flexbe_hello_world_flexbe_behaviors references all implemented behaviors.
+       test_flexbe_behaviors references all implemented behaviors.
     </description>
     <author email="todo@todo.com">TODO</author>
     <maintainer email="todo@todo.com">TODO</maintainer>
