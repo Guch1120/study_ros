@@ -1,12 +1,12 @@
 version: '3.8'
 
 services:
-  ros2_humble_dev:
+  ros2-humble-dev:
     build:
       context: .
       dockerfile: ./docker/Dockerfile
     image: ros2-humble-dev-withcam
-    container_name: ros2_humble_dev_withcam_image
+    container_name: ros2-humble-dev-withcam-image
     tty: true
     stdin_open: true
     ipc: host

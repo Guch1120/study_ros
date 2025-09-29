@@ -16,7 +16,7 @@ SERVICE_STATUS=$(docker-compose ps -q "$TARGET_SERVICE" 2>/dev/null | xargs dock
 if [ "$SERVICE_STATUS" = "running" ]; then
     echo "コンテナ ($TARGET_SERVICE) は既に起動しています。コンテナに入ります..."
     # docker-compose exec を実行し、terminatorを起動する
-    docker compose exec "$TARGET_SERVICE" terminator
+    docker compose exec -it "$TARGET_SERVICE" terminator
 else
     echo "コンテナ ($TARGET_SERVICE) は起動していません。コンテナを起動します..."
     # Ctrl+Cが押されたときに実行される関数
