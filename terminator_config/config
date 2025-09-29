@@ -28,15 +28,15 @@
       type = Terminal
       parent = child2
       # 各ターミナルで実行するコマンド
-      command = bash /home/dockeruser/scripts/launch_0.bash
+      command = bash /home/dockeruser/scripts/launch_rviz.bash
     [[[terminal2]]]
       type = Terminal
       parent = child2
-      command = bash /home/dockeruser/scripts/launch_1.bash
+      command = bash /home/dockeruser/scripts/launch_gazebo.bash
     [[[terminal3]]]
       type = Terminal
       parent = child3
-      command = bash /home/dockeruser/scripts/launch_2.bash
+      command = bash /home/dockeruser/scripts/launch_flexbe.bash
     [[[terminal4]]]
       type = Terminal
       parent = child3

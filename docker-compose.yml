@@ -11,36 +11,29 @@ services:
     stdin_open: true
     ipc: host
     privileged: true
-
-    # NVIDIA GPU を使うための現在の推奨設定
-    runtime: nvidia
-    #AppArmorの制限をこのコンテナだけ解除
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
     security_opt:
       - "apparmor=unconfined"
-    # USBデバイスへのアクセスを許可
     devices:
       - /dev:/dev
 
 
     volumes:
-      # ホストのsrcディレクトリをコンテナのワークスペースのsrcにマウント
       - ./src:/home/dockeruser/ros2_ws/src
-      # X11 Forwarding (GUI表示) の設定
       - /tmp/.X11-unix:/tmp/.X11-unix:rw
-      # terminalの設定
       - ./terminator_config:/home/dockeruser/.config/terminator
-      # terminator実行時スクリプトの設定
       - ./scripts:/home/dockeruser/scripts
-      # D-Busソケットを共有
       - /var/run/dbus:/var/run/dbus
 
 
     environment:
       - DISPLAY=${DISPLAY}
       - QT_X11_NO_MITSHM=1
-      # runtime: nvidia を使えば以下の2つは自動で設定されることが多い
-      - NVIDIA_VISIBLE_DEVICES=all
-      - NVIDIA_DRIVER_CAPABILITIES=all
-      - __GLX_VENDOR_LIBRARY_NAME=nvidia
 
     network_mode: host

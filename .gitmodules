@@ -1,0 +1,4 @@
+[submodule "src/flexbe_app"]
+	path = src/flexbe_app
+	url = git@github.com:HSR-OIT/flexbe_app.git
+	branch = humble

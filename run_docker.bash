@@ -30,6 +30,6 @@ else
     trap cleanup INT
 
     # docker-compose up をフォアグラウンドで実行
-    docker compose up -d
+    docker compose up
     # docker-compose up が Ctrl+C 以外で終了した場合 (例: コンテナが正常終了)、trap は実行されない
 fi
