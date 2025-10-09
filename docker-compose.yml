@@ -5,8 +5,8 @@ services:
     build:
       context: .
       dockerfile: ./docker/Dockerfile
-    image: ros2-humble-dev-withcam
-    container_name: ros2-humble-dev-withcam-image
+    image: ros2-humble-dev
+    container_name: ros2-humble-dev
     tty: true
     stdin_open: true
     ipc: host
@@ -16,7 +16,7 @@ services:
         reservations:
           devices:
             - driver: nvidia
-              count: 1
+              count: all
               capabilities: [gpu]
     security_opt:
       - "apparmor=unconfined"

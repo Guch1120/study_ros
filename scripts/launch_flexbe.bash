@@ -15,7 +15,7 @@ fi
 export XDG_CONFIG_HOME=/tmp/.chromium
 export XDG_CACHE_HOME=/tmp/.chromium
 
-# --- 高度な終了処理 ---
+# --- 終了処理 ---
 LAUNCH_PID=""
 cleanup() {
     echo -e "\n\e[33m Detect Ctrl+C...\e[0m"
@@ -47,7 +47,7 @@ while true; do
     if [ -f "/home/dockeruser/ros2_ws/install/setup.bash" ]; then
         source /home/dockeruser/ros2_ws/install/setup.bash
     else
-        echo "No build file:ワークスペース名あってる？ workspace setup file not found. Did you build the workspace?"
+        echo "No build file: \"ros2_ws\"っていうワークスペースある？ workspace setup file not found. Did you build the workspace?"
     fi
 
     echo "Launching FlexBE..."
