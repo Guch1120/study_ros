@@ -137,6 +137,7 @@ rosdep install --from-paths src --ignore-src
 echo "--- 3. Building the workspace with colcon ---"
 echo "Ensuring you own the workspace files..."
 sudo chown -R dockeruser:dockeruser ~/ros2_ws
+source /opt/ros/humble/setup.bash
 colcon build --symlink-install
 
 # --- 4. nwjsをインストール (patched) ---

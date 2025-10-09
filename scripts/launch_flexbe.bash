@@ -3,17 +3,16 @@
 echo "--- FlexBE ---"
 
 # --- 環境設定 ---
-# ROSの基本環境を読み込む
-if [ -f "/opt/ros/humble/setup.bash" ]; then
-    source /opt/ros/humble/setup.bash
-fi
-# ワークスペースの環境を読み込む（ビルド後）
 if [ -f "/home/dockeruser/ros2_ws/install/setup.bash" ]; then
     source /home/dockeruser/ros2_ws/install/setup.bash
 fi
 
 export XDG_CONFIG_HOME=/tmp/.chromium
 export XDG_CACHE_HOME=/tmp/.chromium
+
+# --- ここまで ---
+
+echo -e "\e[32mready\e[0m\n"
 
 # --- 終了処理 ---
 LAUNCH_PID=""
