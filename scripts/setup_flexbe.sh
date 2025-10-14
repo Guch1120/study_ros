@@ -13,14 +13,14 @@ if [ ! -d "src/flexbe_behavior_engine" ]; then
     git clone --branch humble https://github.com/FlexBE/flexbe_behavior_engine.git src/flexbe_behavior_engine
 else
     echo "flexbe_behavior_engine is already present. change branch for humble..."
-    (cd src/flexbe_behavior_engine && git checkout humble)
+    # (cd src/flexbe_behavior_engine && git checkout humble)
 fi
 
 if [ ! -d "src/flexbe_app" ]; then
     git clone --branch humble https://github.com/HSR-OIT/flexbe_app.git src/flexbe_app
 else
     echo "flexbe_app is already present. change branch for humble..."
-    (cd src/flexbe_app && git checkout humble)
+    # (cd src/flexbe_app && git checkout humble)
 fi
 
 # # --- 1.5. nwjs_install スクリプトを自動修正 ---

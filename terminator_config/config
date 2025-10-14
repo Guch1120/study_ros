@@ -11,7 +11,6 @@
     [[[window0]]]
       type = Window
       parent = ""
-      # ここを修正
       window_state = maximise
     [[[child1]]]
       type = HPaned
@@ -27,7 +26,6 @@
     [[[terminal1]]]
       type = Terminal
       parent = child2
-      # 各ターミナルで実行するコマンド
       command = bash /home/dockeruser/scripts/launch_rviz.bash
     [[[terminal2]]]
       type = Terminal
