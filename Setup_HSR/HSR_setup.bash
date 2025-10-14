@@ -25,6 +25,8 @@ git clone -b humble https://github.com/hsr-project/tmc_manipulation_base.git
 git clone -b humble https://github.com/hsr-project/tmc_manipulation_planner.git
 git clone -b humble https://github.com/hsr-project/tmc_realtime_control.git
 git clone -b humble https://github.com/hsr-project/tmc_voice.git
+git clone -b humble https://github.com/hsr-project/hsrb_moveit_config.git
+git clone -b humble https://github.com/hsr-project/hsrb_moveit_plugins.git
 rm -rf hsrb_launch/hsrb_robot_launch
 
 
@@ -33,3 +35,4 @@ source /opt/ros/humble/setup.bash
 rosdep install --from-paths . -y --ignore-src
 colcon build --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=Release
 source install/setup.bash
+
